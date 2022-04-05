@@ -10,9 +10,13 @@ public:
 		int y = (j-i) * x;
 		area = max(area, y);
 		if(height[i] < height[j])
+		{
 			i++;
+		}
 		else
-            j--;
+		{
+                       j--;
+		}
 	}
 	return area;
     }
