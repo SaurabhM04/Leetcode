@@ -1,1 +1,1 @@
-### 1405. Longest Happy String
+### 1405. Longest Happy String.
