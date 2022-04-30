@@ -1,3 +1,3 @@
-### 785. Is Graph Bipartite? 
+### 785. Is Graph Bipartite?.
 ### https://leetcode.com/problems/is-graph-bipartite/
 ---
