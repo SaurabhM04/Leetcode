@@ -1,0 +1,29 @@
+// Basic idea: a/b = e^(ln(a))/e^(ln(b)) = e^(ln(a)-ln(b))
+
+// class Solution {
+// public:
+//     int divide(int dividend, int divisor) {
+//         if (dividend==0) return 0;
+//         if (divisor==0) return INT_MAX;
+//         long long res=double(exp(log(fabs(dividend))-log(fabs(divisor))));
+//         if ((dividend<0)^(divisor<0)) res=-res;
+//         if (res>INT_MAX) res=INT_MAX;
+//         return res;
+//     }
+// };
+
+class Solution
+{
+public:
+    int divide(int div, int d)
+    {
+
+        if (div == INT_MIN && d == -1)
+            return INT_MAX;
+        else
+        {
+            int q = div / d;
+            return q;
+        }
+    }
+};
