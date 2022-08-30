@@ -10,15 +10,13 @@ public:
         }
         
         for(int i=0;i<row;i++) {
-            for(int j=0;j<col/2;j++){
-                swap(m[i][j],m[i][col-j-1]);
-            }
+            reverse(m[i].begin(),m[i].end());
         }
-        for(auto i:m) {
-            for(auto j:i) {
-                cout<<j<<"  ";
-            }
-            cout<<endl;
-        }
+        // for(auto i:m) {
+        //     for(auto j:i) {
+        //         cout<<j<<"  ";
+        //     }
+        //     cout<<endl;
+        // }
     }
 };
