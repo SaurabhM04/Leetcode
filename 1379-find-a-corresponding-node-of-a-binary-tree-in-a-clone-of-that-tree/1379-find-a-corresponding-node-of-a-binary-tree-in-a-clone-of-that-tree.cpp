@@ -10,15 +10,23 @@
 
 class Solution {
 public:
-    TreeNode* ans;
     TreeNode* getTargetCopy(TreeNode* original, TreeNode* cloned, TreeNode* target) {
-        if(original and cloned) {
-            if(original==target) {
-                ans=cloned;
+        queue<pair<TreeNode*,TreeNode*>>q;
+        q.push(pair<TreeNode*,TreeNode*>(original,cloned));
+        while(not q.empty()) {
+            pair<TreeNode*,TreeNode*> k=q.front();
+            q.pop();
+            if(k.first==target) {
+                return k.second;
             }
-            getTargetCopy(original->left,cloned->left,target);
-            getTargetCopy(original->right,cloned->right,target);
+            if(k.first->left) {
+                q.push(pair<TreeNode*,TreeNode*>(k.first->left,k.second->left));
+            }
+            if(k.first->right) {
+                q.push(pair<TreeNode*,TreeNode*>(k.first->right,k.second->right));
+            }
         }
-      return ans;
+        TreeNode* ans;
+        return ans;
     }
 };
