@@ -10,7 +10,9 @@ public:
         }
         
         for(int i=0;i<row;i++) {
-            reverse(m[i].begin(),m[i].end());
+            for(int j=0;j<col/2;j++){
+                swap(m[i][j],m[i][col-j-1]);
+            }
         }
         // for(auto i:m) {
         //     for(auto j:i) {
