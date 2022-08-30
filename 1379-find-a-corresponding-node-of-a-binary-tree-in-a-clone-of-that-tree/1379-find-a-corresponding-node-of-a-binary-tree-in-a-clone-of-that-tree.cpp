@@ -15,7 +15,6 @@ public:
         if(original and cloned) {
             if(original==target) {
                 ans=cloned;
-                return cloned;
             }
             getTargetCopy(original->left,cloned->left,target);
             getTargetCopy(original->right,cloned->right,target);
