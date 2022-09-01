@@ -28,8 +28,6 @@ public:
     vector<string> letterCasePermutation(string s) {
        vector<string>v;
         string op="";
-        //op+=s[0];
-       // s.erase(s.begin()+0);
         solve(s,op,v);
         return v;
     }
