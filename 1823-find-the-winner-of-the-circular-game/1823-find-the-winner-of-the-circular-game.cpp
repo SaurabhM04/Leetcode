@@ -11,7 +11,7 @@ public:
         return;
     }
     int findTheWinner(int n, int k) {
-        //int index;
+        int index;
         vector<int>v(n);
         for(int i=0; i<n;i++){
         v[i]=i+1;
