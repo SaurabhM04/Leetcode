@@ -13,13 +13,13 @@
 class Solution {
 public:
     vector<vector<int>> verticalTraversal(TreeNode* root) {
-        map<int,vector<int>>vertical;
-        queue<pair<TreeNode*,int>>q;
+        map<int,vector<int>>vertical;//id vector 
+        queue<pair<TreeNode*,int>>q;//node, id
         vector<vector<int>>ans;
         q.push({root,0});
         while(not q.empty()) {
             int st=q.size();
-            vector<pair<int,int>> level;
+            vector<pair<int,int>> level;// node-value,id
             for(int i=0;i<st;i++) { 
                 pair<TreeNode*,int> k=q.front();
                 q.pop();
