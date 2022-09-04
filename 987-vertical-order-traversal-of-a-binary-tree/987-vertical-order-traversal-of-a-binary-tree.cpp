@@ -9,47 +9,35 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
 class Solution {
 public:
-    static bool cmp(pair<int, int> & v1, pair<int, int>& v2)
-    {
-    return v1.second < v2.second;
-    }
     vector<vector<int>> verticalTraversal(TreeNode* root) {
-       map<int,vector<int>>mp;
-        queue<pair<int,TreeNode*>>q;
-        q.push({0,root});
-        while(!q.empty())
-        {    
-            int n=q.size();
-            vector<pair<int, int>> v;
-            for(int i=0; i<n; i++)
-            {
-                auto cur=q.front();
-                q.pop();
-                int y=cur.first;
-                int x=cur.second->val;
-                
-                v.push_back(make_pair(y,x));
-                
-                if(cur.second->left)
-                q.push({y-1,cur.second->left});
-                if(cur.second->right)
-                q.push({y+1,cur.second->right});
-                
-            }
-            sort(v.begin(),v.end(),cmp);
-            for(auto p :v)
-            mp[p.first].push_back(p.second);
-        }
+        map<int,vector<int>>vertical;
+        queue<pair<TreeNode*,int>>q;
         vector<vector<int>>ans;
-      
-        for(auto i : mp) 
-        { 
-            vector<int>res;
-            for(auto j : i.second)
-            res.push_back(j);
-            ans.push_back(res);
+        q.push({root,0});
+        while(not q.empty()) {
+            int st=q.size();
+            vector<pair<int,int>> level;
+            for(int i=0;i<st;i++) { 
+                pair<TreeNode*,int> k=q.front();
+                q.pop();
+                level.emplace_back(make_pair(k.first->val,k.second));
+                if(k.first->left) {
+                    q.push({k.first->left,k.second-1});
+                }
+                if(k.first->right) {
+                    q.push({k.first->right,k.second+1});
+                }
+            }
+            sort(level.begin(),level.end());
+            for(auto pr : level) {
+                vertical[pr.second].push_back(pr.first);
+            }
+        }
+        for(auto i:vertical) {
+            ans.push_back(i.second);
         }
         return ans;
     }
