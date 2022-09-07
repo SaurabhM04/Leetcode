@@ -17,15 +17,11 @@ public:
          nums[i]=0;
             i++;
         }
-        //int j=i;
         while(w--){
          nums[i++]=1;
-            //j++;
         }
-       // int k=j;
         while(b--){
          nums[i++]=2;
-          //  k++;
         }
     }
 };
