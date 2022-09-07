@@ -32,6 +32,14 @@ public:
         
     }
     string tree2str(TreeNode* root) {
+        string ans="";
+        dfs(root,ans);
+        return ans;
+    }
+};
+// class Solution {
+// public:
+//     string tree2str(TreeNode* root) {
 //       if(root == NULL)
 //       {
 //           return "";
@@ -51,8 +59,6 @@ public:
 //           str+="(" + tree2str(root->right) + ")";   
 //         }
 //         return str;  
-        string ans="";
-        dfs(root,ans);
-        return ans;
-    }
-};
+      
+//     }
+// };
