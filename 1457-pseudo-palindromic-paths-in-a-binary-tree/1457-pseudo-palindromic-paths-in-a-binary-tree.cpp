@@ -35,7 +35,7 @@ public:
           }
       }
       dfs(root->right,freq,count);
-        // freq[root->val]--;
+         freq[root->val]--;
       
     }
     int pseudoPalindromicPaths (TreeNode* root) {
