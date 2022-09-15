@@ -5,7 +5,7 @@ public:
         if(n%2) {
             return {};
         }
-        unordered_map<int,int>mp;
+        map<int,int>mp;
         vector<int>ans;
         for(int i=0;i<n;i++) {
             mp[changed[i]]++;
