@@ -7,7 +7,7 @@ public:
         string last="";
         for(int i=0; i<n; i++)
         {
-            if(s[i]!=' ' && i<n-1){
+            if(s[i]!=' ' && i!=n-1){
                 str+=s[i];
             }
             else if(i==n-1){
