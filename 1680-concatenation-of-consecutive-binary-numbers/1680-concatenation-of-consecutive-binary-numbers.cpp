@@ -8,7 +8,7 @@ public:
             if((i&(i-1))==0) {
                 shift+=1;
             }
-            ans=((ans<<shift)|i)%MOD;
+            ans=((ans<<shift)+i)%MOD;
         }
         return ans;
     }
