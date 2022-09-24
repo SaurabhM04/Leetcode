@@ -11,21 +11,31 @@
  */
 class Solution {
 public:
-   
-    bool dfs(TreeNode*root,int sum,int targetsum){
-        if(!root)
-            return false;
-        sum+=root->val;
-        if(not root->left and not root->right) {
-            if(sum==targetsum) {
-                return true;
-            }
-            return false;
+    void solve(TreeNode* root, int & curr_sum,int & target,int &ans) {
+        if(not root) {
+            return;
         }
-        return dfs(root->left,sum,targetsum) || dfs(root->right,sum,targetsum);
-      
+        curr_sum+=root->val;
+        if(not root->left and not root->right) {
+            if(curr_sum==target) {
+                ans=true;
+            }else {
+                curr_sum-=root->val;
+            }
+            return;
+        }
+        if(root->left) {
+            solve(root->left,curr_sum,target,ans);
+        }
+        if(root->right) {
+            solve(root->right,curr_sum,target,ans);
+        }
+        curr_sum-=root->val;
     }
     bool hasPathSum(TreeNode* root, int targetSum) {
-       return  dfs(root,0,targetSum);
+        int ans =false;;
+        int curr_sum=0;
+        solve(root,curr_sum,targetSum,ans);
+        return ans;
     }
 };
