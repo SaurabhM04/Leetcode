@@ -26,12 +26,8 @@ public:
                     {  
                         l++;
                         
-                    }
-                   
-                    
-                }
-            
-            
+                    }           
+                }      
         }
       return ans;
     }
