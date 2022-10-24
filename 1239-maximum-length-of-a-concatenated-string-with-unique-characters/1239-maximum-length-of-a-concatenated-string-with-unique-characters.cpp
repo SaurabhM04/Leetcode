@@ -1,14 +1,20 @@
 class Solution {
 public:
-    void solve(int curr_index,unordered_set<char>st,vector<string>&arr,int &ans) {
+    void solve(int curr_index,vector<bool>st,vector<string>&arr,int &ans) {
         if(curr_index==arr.size()) {
-            ans=max<int>(ans,st.size());
+            int ct=0;
+            for(auto i:st) {
+                if(i) {
+                    ct++;
+                }
+            }
+            ans=max(ct,ans);
             return;
         }
         solve(curr_index+1,st,arr,ans);
         for(auto i:arr[curr_index]) {
-            if(st.find(i)==st.end()) {
-                st.insert(i);
+            if(!st[i-97]) {
+                st[i-97]=true;
             }else {
                 return;
             }
@@ -16,7 +22,7 @@ public:
         solve(curr_index+1,st,arr,ans);
     }
     int maxLength(vector<string>& arr) {
-        unordered_set<char>st;
+        vector<bool>st(26,false);
         int ans=0;
         solve(0,st,arr,ans);
         return ans;
