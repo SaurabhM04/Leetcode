@@ -54,31 +54,63 @@
 
 
 
+// class Solution {
+//     public:
+//     int ans=0;
+//     bool unique(string s)
+//     {
+//         set<char>st;
+//         for(auto i:s)
+//         {
+//             if(st.count(i)) return false;
+//             st.insert(i);
+//         }
+//         return true;
+//     }
+//     void rec(int idx,vector<string>&arr,string s)
+//     {
+//         if(!unique(s)) return ;
+//         int sz=s.size();
+//         ans=max(ans,sz);
+//         for(int i=idx;i<arr.size();i++)
+//         {
+//             rec(i+1,arr,s+arr[i]);
+//         }
+//     }
+//     int maxLength(vector<string>& A) {
+//         rec(0,A,"");
+//         return ans;
+//     }
+// };
+
+
 class Solution {
-    public:
-    int ans=0;
-    bool unique(string s)
+public:
+    // bool unique(string &s)
+    // {
+    //     set<char>st;
+    //     for(auto &ch:s)
+    //     {
+    //         if(st.count(ch)) return false;
+    //         st.insert(ch);
+    //     }
+    //     return true;
+    // }
+    void rec(string s,int idx,vector<string>&arr,int n,int &ans)
     {
-        set<char>st;
-        for(auto i:s)
-        {
-            if(st.count(i)) return false;
-            st.insert(i);
-        }
-        return true;
-    }
-    void rec(int idx,vector<string>&arr,string s)
-    {
-        if(!unique(s)) return ;
+        unordered_set<char>st(s.begin(),s.end());
+        if(st.size()!=s.size()) return;
         int sz=s.size();
         ans=max(ans,sz);
-        for(int i=idx;i<arr.size();i++)
-        {
-            rec(i+1,arr,s+arr[i]);
-        }
+        
+        if(idx>=n) return ;
+        
+        rec(s+arr[idx],idx+1,arr,n,ans); // take 
+        rec(s,idx+1,arr,n,ans); // not take
     }
-    int maxLength(vector<string>& A) {
-        rec(0,A,"");
+    int maxLength(vector<string>& arr) {
+        int n=arr.size(),ans=0;
+        rec("",0,arr,n,ans);
         return ans;
     }
 };
