@@ -24,15 +24,15 @@
 
 class Solution {
 public:
-    unordered_map<int,vector<char>> make_phone_pad() {
-        unordered_map<int,vector<char>>phone;
+    unordered_map<char,vector<char>> make_phone_pad() {
+        unordered_map<char,vector<char>>phone;
         char ch='a';
-        for(int i=2;i<=9;i++) {
+        for(char i='2';i<='9';i++) {
             for(char j=ch;j<ch+3;j++) {
                 phone[i].push_back(j);
             }
             ch=ch+3;
-            if(i==7 or i==9) {
+            if(i=='7' or i=='9') {
                 phone[i].push_back(ch);
                 ch++;
             }    
@@ -42,14 +42,14 @@ public:
     }
     
    
-    void solve(int curr_index,string curr_string,string &digits,unordered_map<int,vector<char>>&pad,vector<string>&ans) {
+    void solve(int curr_index,string curr_string,string &digits,unordered_map<char,vector<char>>&pad,vector<string>&ans) {
         if(curr_index==digits.size()) {
             if(curr_string.size()) {
                 ans.push_back(curr_string);
             }
             return ;
         }
-        for(auto i:pad[digits[curr_index]-'0']) {
+        for(auto i:pad[digits[curr_index]]) {
             curr_string+=i;
             // cout<<"HELLO";
             solve(curr_index+1,curr_string,digits,pad,ans);
@@ -59,7 +59,7 @@ public:
   
     
     vector<string> letterCombinations(string digits) {
-        unordered_map<int,vector<char>>pad=make_phone_pad();
+        unordered_map<char,vector<char>>pad=make_phone_pad();
         // for(auto i:pad) {
         //     cout<<i.first<<" -> ";
         //     for(auto j:i.second) {
