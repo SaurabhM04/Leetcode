@@ -1,16 +1,16 @@
 class Solution {
     
 public:
-    int recur(vector<vector<int>>& grid,int i,int j,vector<vector<int>>&dp)
+    int recur(vector<vector<int>>& grid,int i,int j,vector<vector<int>>&dp,int m,int n)
     {
-         if(i==grid.size())
+         if(i==m)
             return j;
-         if(dp[i][j]!=-1)
+           if(dp[i][j]!=-1)
              return dp[i][j];
-            if(j+1<grid[0].size() && grid[i][j]==1 && grid[i][j+1]==1)
-            return dp[i][j]=recur(grid,i+1,j+1,dp);
+            if(j+1<n && grid[i][j]==1 && grid[i][j+1]==1)
+            return dp[i][j]=recur(grid,i+1,j+1,dp,m,n);
             if(j-1>=0 && grid[i][j]==-1 && grid[i][j-1]==-1)
-            return dp[i][j]=recur(grid,i+1,j-1,dp);
+            return dp[i][j]=recur(grid,i+1,j-1,dp,m,n);
             else return -1;
       
     }
@@ -20,7 +20,7 @@ public:
         vector<vector<int>>dp(m+1,vector<int>(n+1,-1));
         for(int i=0; i<grid[0].size(); i++)
         {
-           ans.push_back(recur(grid,0,i,dp));
+           ans.push_back(recur(grid,0,i,dp,m,n));
         }
         return ans;
     }
