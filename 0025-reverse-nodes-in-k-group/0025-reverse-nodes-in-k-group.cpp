@@ -38,10 +38,9 @@ public:
             count++;
         }
         
-        if(1)
-        {
+        
             head->next=reverseKGroup(next, k);
-        }
+       // }
         return prev;
 
     }
