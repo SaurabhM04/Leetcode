@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<vector<int>>ans;
-    void rec(int idx,vector<int>& candidates,vector<int>v, int target)
+    void rec(int idx,vector<int>& candidates,vector<int> &v, int &target)
     {
         if(target<0) return;
         if(target==0) 
@@ -20,7 +20,8 @@ public:
     }
     vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
         int idx=0;
-        rec(0,candidates,{},target);
+        vector<int>curr_ele;
+        rec(0,candidates,curr_ele,target);
         return ans;
     }
 };
