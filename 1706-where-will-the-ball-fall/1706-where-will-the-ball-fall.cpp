@@ -1,22 +1,26 @@
 class Solution {
     
 public:
-    int recur(vector<vector<int>>& grid,int i,int j)
+    int recur(vector<vector<int>>& grid,int i,int j,vector<vector<int>>&dp)
     {
          if(i==grid.size())
             return j;
+         if(dp[i][j]!=-1)
+             return dp[i][j];
             if(j+1<grid[0].size() && grid[i][j]==1 && grid[i][j+1]==1)
-            return recur(grid,i+1,j+1);
+            return dp[i][j]=recur(grid,i+1,j+1,dp);
             if(j-1>=0 && grid[i][j]==-1 && grid[i][j-1]==-1)
-            return recur(grid,i+1,j-1);
+            return dp[i][j]=recur(grid,i+1,j-1,dp);
             else return -1;
       
     }
     vector<int> findBall(vector<vector<int>>& grid) {
         vector<int>ans;
+        int m=grid.size(),n=grid[0].size();
+        vector<vector<int>>dp(m+1,vector<int>(n+1,-1));
         for(int i=0; i<grid[0].size(); i++)
         {
-           ans.push_back(recur(grid,0,i));
+           ans.push_back(recur(grid,0,i,dp));
         }
         return ans;
     }
