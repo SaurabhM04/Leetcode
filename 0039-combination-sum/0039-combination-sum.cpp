@@ -1,27 +1,27 @@
 class Solution {
 public:
     vector<vector<int>>ans;
-    void rec(int idx,vector<int>& candidates,vector<int> &v, int &target)
+    void solve(int idx,vector<int>&v,vector<int>& nums,int target)
     {
-        if(target<0) return;
-        if(target==0) 
-        {
-            ans.push_back(v);
+        if(idx>=nums.size())
             return;
+        if(target==0){
+            ans.push_back(v);
+           return;
         }
-        for(int i=idx;i<candidates.size();i++)
-        {
-            v.push_back(candidates[i]);
-            target-=candidates[i];
-            rec(i,candidates,v,target);
-            v.pop_back();
-            target+=candidates[i];
-        }
+        if(target<0)
+            return;
+        v.push_back(nums[idx]);
+        target-=nums[idx];
+        solve(idx,v,nums,target);
+        v.pop_back();
+        target+=nums[idx];
+        solve(idx+1,v,nums,target);
+        
     }
-    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
-        int idx=0;
-        vector<int>curr_ele;
-        rec(0,candidates,curr_ele,target);
+    vector<vector<int>> combinationSum(vector<int>& nums, int target) {
+        vector<int>v;
+        solve(0,v,nums,target);
         return ans;
     }
 };
