@@ -14,6 +14,10 @@ public:
             str+=st.top();
             st.pop();
         }
+        // while(!st.empty()){
+        //     str=st.top()+str;  // gives TLE
+        //     st.pop();
+        // }
         reverse(str.begin(),str.end());
         return str;
     }
