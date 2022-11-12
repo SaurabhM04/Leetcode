@@ -58,9 +58,6 @@ public:
     
     int Rear() {
         if(not isEmpty()) {
-            if(right==0) { //here we are accessing right-1 so there is no problem when r==queue_size but if r==0 then we will get an error so point r to one index after the last enqueued element
-                right=0;
-            }
             return circular[right-1];
         }
         return -1;
