@@ -1,9 +1,8 @@
 class Solution {
 public:
     vector<vector<int>> findWinners(vector<vector<int>>& matches) {
-        unordered_map<int,int>mp,mp1;
+        map<int,int>mp,mp1;
         vector<vector<int>>v(2);
-        //vector<int>v2,v3;
         for(int i=0; i<matches.size(); i++)
         {
             mp[matches[i][0]]++;
@@ -17,10 +16,8 @@ public:
             if(mp1.find(x.first)==mp1.end())
                 v[0].push_back(x.first);
         }
-        sort(v[0].begin(),v[0].end());
-        sort(v[1].begin(),v[1].end());
-        // v.push_back(v3);
-        // v.push_back(v2);
+        // sort(v[0].begin(),v[0].end()); //no need to sort as we take map intead of unordered_map
+        // sort(v[1].begin(),v[1].end());
         return v;
     }
 };
