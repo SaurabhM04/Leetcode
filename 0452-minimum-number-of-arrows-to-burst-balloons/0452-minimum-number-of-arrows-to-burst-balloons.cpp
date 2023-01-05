@@ -10,9 +10,7 @@ public:
         int a=points[0][1];
         ans++;
         for(int i=1; i<n; i++){
-            int flag=0;
-            if(a>=points[i][0]&&a<=points[i][1]){
-                flag=1;
+            if(a>=points[i][0] && a<=points[i][1]){
                 continue;
             }
             else{
