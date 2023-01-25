@@ -1,7 +1,6 @@
 class Solution {
 public:
     int minOperations(int n) {
-        vector<int>v;
         int mid;
         if(n%2){
             int x=(n/2);
