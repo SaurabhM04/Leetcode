@@ -12,7 +12,7 @@ public:
         long long int dif=0;
         for(int i=0; i<n; i++){
             dif+=abs(nums1[i]-nums2[i]);
-            if((abs(nums1[i]-nums2[i])<k && nums1[i]!=nums2[i]) || ( k!=0 && abs(nums1[i]-nums2[i])%k!=0 )){
+            if(( k!=0 && abs(nums1[i]-nums2[i])%k!=0 )){
                 return -1;
             }
         }
