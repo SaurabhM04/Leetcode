@@ -1,22 +1,23 @@
 class Solution {
 public:
     vector<int> findAnagrams(string s, string p) {
-        vector<int>s_count(26,0),p_count(26,0),ans;
-        int l=0,r=0,n=s.size(),window_size=p.size();
-        for(auto i:p) {
-            p_count[i-97]++;
-        }
-        while(r<n) {
-            if(r-l+1==window_size) {
-                s_count[s[r]-97]++;
-                if(s_count==p_count) {
-                    ans.emplace_back(l);
-                }
-                s_count[s[l]-97]--;
+        vector<int>window_s(26,0),freq_p(26,0);
+        vector<int>ans;
+        int l=0,r=0;
+        for(auto x:p)
+            freq_p[x-97]++;
+        for(int i=0; i<s.size(); i++){
+            if(r-l+1==p.size())
+            {
+                window_s[s[r]-97]++;
+                if(freq_p==window_s)
+                ans.push_back(l);
+                window_s[s[l]-97]--;
                 l++;
                 r++;
-            }else {
-                s_count[s[r]-97]++;
+            }
+            else{
+                window_s[s[r]-97]++;
                 r++;
             }
         }
